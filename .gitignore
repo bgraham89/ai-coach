@@ -1,0 +1,8 @@
+# Secrets
+*.key
+
+# Copyrighted Materials
+training_materials/*.pdf
+
+# Python
+**/__pycache__
