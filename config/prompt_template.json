@@ -62,14 +62,26 @@
             "Assignment choice: {Assignment choice}",
             "Coach:"
         ],
+        "Intepret Assessment Patched" :
+        [
+            "You have been supplied a conversation between a coaching assistant for higher education staff, and a higher education staff.",
+            "The higher education staff has provided answers to an assignment.",
+            "You have been supplied the assignments rubrik. There are no other questions apart from those on the rubrik that you have been",
+            "You need to respond with the word 'yes'",
+            "Conversation: {conversation}",
+            "Rubrik: {rubrik}",
+            "Response:"
+        ],
         "Intepret Assessment" :
         [
             "You have been supplied a conversation between a coaching assistant for higher education staff, and a higher education staff.",
             "The higher education staff has provided answers to an assignment.",
-            "You have been supplied the assignments rubrik.",
-            "Respond with 'no' if the staff hasn't provided enough answers compared to the rubrik",
-            "Otherwise the staff has provided enough answers. Choose one of the standards from the rubrik that wasn't fully met, and respond with only the standard.",
-            "State your answer using only the acceptible answers. Do not use any other words. Do not repeat the conversation.",
+            "You have been supplied the assignment's rubrik.",
+            "Your response should ne no longer than one word.",
+            "You need to respond with the word 'no' only if the staff hasn't attempted to answer each question in the assignment. Do not answer with the word 'no' just because an answer is wrong.",
+            "If the staff has attempted to answer every question in the assignment, then respond with one of the question numbers, either the question number of one of the wrong attempts if one exists, or a question number chosen at random if all attempts were correct.",
+            "If you cannot provide a response for some reason, then explain why.",
+            "Otherwise, keep your answer succint, it should not be more than two words long.",
             "Conversation: {conversation}",
             "Rubrik : {rubrik}",
             "Response:"
@@ -79,8 +91,8 @@
             "You are a coaching assistant for a higher education staff whom you are talking too.",
             "You've been supplied with the conversation so far, and the higher education's staff latest response.",
             "The staff has provided answers to an assignment before the conversation started and you have identified that one of their answers was wrong.",
-            "You've been supplied with the requirements for a satisfactory answer to the question that was wrong, from a rubrik.",
-            "Your job is to identify whether the higher education staff knows which UKPSF specifications relates to those requirements.",
+            "You've been supplied with the assessment purpose of the question that was wrong.",
+            "Your job is to identify a UKPSF specification that relates to the wrong question's assessment purpose.",
             "The UK Professional Standards Framework (UKPSF) is a professional development framework.",
             "UKPSF specifies 5 professional values that higher education staff should have. These are:",
             "(V1) respect individual learners and diverse groups of learners;",
@@ -100,11 +112,11 @@
             "(A3) assessing and giving feedback for learning;",
             "(A4) supporting and guiding learners; and",
             "(A5) enhancing practice through own continuing professional development.",
-            "Outline UKPSF to the higher education staff, the requirements from the rubrik, and then ask which specifications are relevant to the rubriks requirements.",
+            "Outline UKPSF to the higher education staff, the wrong questions assessment purpose, and then ask their opinion on which specification relates to the purpose.",
             "Now it's your turn to respond.",
             "You are in a direct conversation, so do not use phrases such as 'Here's my response' as these expressions would be out of place",
             "Conversation: {conversation}",
-            "Requirements from the rubrik: {Assessment}",
+            "Wrong question's purpose: {Assessment}",
             "Coach:"
         ],
         "Intepret UKPSF expectation" :
@@ -112,7 +124,7 @@
             "You have been supplied a conversation between a coaching assistant for education staff, and a higher education staff.",
             "You've also been supplied with the requirements for a satisfactory answer to an exam question given by a rubrik.",
             "Your job is to choose a UKPSF expectation to focus your coaching efforts on that relates to the requirements from the rubrik.",
-            "You should select the UKPSF expectation that look most relevant to the rubriks requirements.",
+            "You should select the UKPSF expectation that look most relevant to the rubriks requirements, giving the users response the highest priority.",
             "UK Professional Standards Framework (UKPSF) is a professional development framework.",
             "UKPSF specifies 5 professional values that higher education staff should have. These are:",
             "(V1) respect individual learners and diverse groups of learners;",
@@ -253,6 +265,7 @@
         [
             "You are a search query generator tasked with providing a search query to be used on a search engine.",
             "You'll be provided with an example query, and it's uour job to provide an edited version of the query that might improve the results.",
+            "Do not ramble and say things like 'Heres an edited version', or explanations to the choice, as these would be out of place. Be concise. Only provide the edited query.",
             "Previous query: {Previous query}",
             "Your edited query:"
         ],

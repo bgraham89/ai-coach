@@ -113,7 +113,7 @@ class Application(Timer):
         documents = self._GetDocumentText()
         prompt_injections = self._dst.AddPromptInjections(self._conversation, documents, self._GetPaths())
         response = self._GenerateResponse(prompt_injections)
-        if self._dst.FillSlot(response):
+        if self._dst.FillSlot(response, self._GetPaths()):
             self._conversation = self._dst.GetNewConversation() + self._conversation[-1:]
         print(Fore.GREEN + f"(Slot intepreted?: {response})")
 

@@ -61,10 +61,10 @@ class DialogueStateTracking:
                 injections["documents"] = documents
                 continue
             if variable == "assignments":
-                injections["assignments"] = self.GetAssignmentTitles(paths["assignments"])
+                injections["assignments"] = self._GetAssignmentTitles(paths["assignments"])
                 continue
             if variable == "rubrik":
-                injections["rubrik"] = self.GetAssignmentRubrik(paths["assignments"])
+                injections["rubrik"] = self._GetAssignmentRubrik(paths["assignments"])
                 continue
 
             # injection from previous slot
@@ -81,21 +81,21 @@ class DialogueStateTracking:
     def ApproveDocuments(self, documents):
         return True
     
-    def FillSlot(self, intepretation):
+    def FillSlot(self, intepretation, paths):
         if "no" == intepretation.lower()[:2]:
             return False
         
         current_frame, current_slot = self.GetCurrentFrame()
-        self._progress[current_slot] = intepretation
+        self._progress[current_slot] = self._CleanIntepretation(intepretation, paths)
         return True
     
-    def GetAssignmentTitles(self, template_path):
+    def _GetAssignmentTitles(self, template_path):
         with open(template_path, 'r') as file:
             assignment_info = json.load(file)
         
         return "/n".join(assignment_info["titles"])
     
-    def GetAssignmentRubrik(self, template_path):
+    def _GetAssignmentRubrik(self, template_path):
         with open(template_path, 'r') as file:
             assignment_info = json.load(file)
         
@@ -107,3 +107,17 @@ class DialogueStateTracking:
         if len(slot) > 9 and slot[:8] == "Intepret":
             slot = slot[9:]
         return slot
+    
+    def _CleanIntepretation(self, interpretation, paths):
+        current_frame, current_slot = self.GetCurrentFrame()
+        return interpretation if current_slot != "Assessment" else self._GetQuestionInsight(interpretation, paths["assignments"])
+    
+    def _GetQuestionInsight(self, intepretation, path):
+        choice = int("".join(char for char in intepretation if char.isnumeric())) - 1
+
+        with open(path, 'r') as file:
+            assignment_info = json.load(file)
+        
+        assignment_choice = self._progress["Assignment choice"].lower()
+        insight = assignment_info["explanations"][assignment_choice][choice]
+        return insight

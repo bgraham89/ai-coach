@@ -9,10 +9,21 @@
     {
         "becoming an engaging teacher" : 
         [
-            "Question 1 should be an answer that indicates that the staff demonstrates a critical understanding of the key concepts and theories around educational relationships and engagement.",
-            "Question 2 should be an answer that indicates that the staff can apply concepts and theories from relevant research to enhance their own academic practise.",
-            "Question 3 should be an answer that indiciates that the staff demonstrates the ability to analyse teaching approaches and evaluate a range of options to ensure their practise is inclusive.",
-            "Question 4 should be an answer that indiciates that the staff critically reflects on their own growth as a teacher."
+            "There should be four answers in total.",
+            "The answer to Question 1 should be 'true'.",
+            "The answer to Question 2 should be 'true'.",
+            "The answer to Question 3 should be 'true'.",
+            "The answer to Question 4 should be 'true'."
+        ]
+    },
+    "explanations" :
+    {
+        "becoming an engaging teacher" : 
+        [
+            "Question 1 aims to help staff demonstrate a critical understanding of the key concepts and theories around educational relationships and engagement.",
+            "Question 2 should be 'True' and indicates that the staff can apply concepts and theories from relevant research to enhance their own academic practise.",
+            "Question 3 should be 'True' and indicates that the staff demonstrates the ability to analyse teaching approaches and evaluate a range of options to ensure their practise is inclusive.",
+            "Question 4 should be 'True' and indicates that the staff critically reflects on their own growth as a teacher."
         ]
     }
 }
