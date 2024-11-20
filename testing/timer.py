@@ -1,10 +1,11 @@
 import time
 
-class Timer:
+class Timer(object):
 
     def __init__(self):
         self._time_created = time.time()
-        self._should_print_with_time = True 
+        self._should_print_with_time = True
+        super().__init__()
 
     def Print(self, string_to_print, should_print):
         if not should_print:

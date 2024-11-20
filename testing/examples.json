@@ -1,0 +1,19 @@
+{
+    "responses" : 
+    {
+        "dismissive" :
+        [
+            "no thanks",
+            "not interested",
+            "I don't know",
+            ""
+        ],
+        "revise" :
+        [
+            "Yes, I'm looking to revise.",
+            "I've completed >module<.", 
+            "Here's my answers: >answers<",
+            ""
+        ]
+    }
+}

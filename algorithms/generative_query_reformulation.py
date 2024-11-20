@@ -24,7 +24,8 @@ class GenerativeQueryReformulation:
             injections = {
                 "Previous query" : self._current_query
             }
-            return generator.invoke(injections)
+            self._current_query = generator.invoke(injections)
+            return self._current_query
         
         if current_slot == "Key questions":
             self._current_query = f"Key questions for {memory['UKPSF expectation']}"

@@ -5,18 +5,19 @@ from algorithms.retreival_augmented_generation import RetreivalAugmentedGenerati
 from algorithms.dialogue_state_tracking import DialogueStateTracking
 from algorithms.generative_query_reformulation import GenerativeQueryReformulation
 from testing.timer import Timer
+from testing.automate import Automator
 
 import sys
 from colorama import Fore, Back, Style
 
-class Application(Timer):
+class Application(Timer, Automator):
 
     def __init__(self):
         super().__init__()
         self.TRAINING_MATERIAL_PATH = "./training_materials/"
         self.DIALOGUE_STATES_PATH = "./config/dialogue_states.json"
         self.PROMPT_TEMPLATE_PATH = "./config/prompt_template.json"
-        self.ASSIGNMNETS_TEMPLATE_PATH = "./config/assignments.json"
+        self.ASSIGNMENTS_TEMPLATE_PATH = "./config/assignments.json"
         self.PRETRAINED_MODEL = "llama3.1"
         self._CreateDialogueStateTracker()
         self._CreateGenerativeQueryReformulator()
@@ -33,7 +34,7 @@ class Application(Timer):
             self._IntepretUserQuery()
             ai_response = self._RespondToUserQuery()
             self._conversation.append(f"Coach: {ai_response} ")
-            user_query = input(Fore.BLUE + "\n")
+            user_query = self.Input(Fore.BLUE + "\n")
         print(Fore.WHITE + "Goodbye!")
 
     def _CreateDialogueStateTracker(self, should_print=False):
@@ -75,7 +76,7 @@ class Application(Timer):
         paths = {
             "training_material" : self.TRAINING_MATERIAL_PATH,
             "prompt_templates" : self.PROMPT_TEMPLATE_PATH,
-            "assignments" : self.ASSIGNMNETS_TEMPLATE_PATH
+            "assignments" : self.ASSIGNMENTS_TEMPLATE_PATH
         }
         return paths
     

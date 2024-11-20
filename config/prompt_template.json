@@ -62,26 +62,16 @@
             "Assignment choice: {Assignment choice}",
             "Coach:"
         ],
-        "Intepret Assessment Patched" :
-        [
-            "You have been supplied a conversation between a coaching assistant for higher education staff, and a higher education staff.",
-            "The higher education staff has provided answers to an assignment.",
-            "You have been supplied the assignments rubrik. There are no other questions apart from those on the rubrik that you have been",
-            "You need to respond with the word 'yes'",
-            "Conversation: {conversation}",
-            "Rubrik: {rubrik}",
-            "Response:"
-        ],
         "Intepret Assessment" :
         [
             "You have been supplied a conversation between a coaching assistant for higher education staff, and a higher education staff.",
-            "The higher education staff has provided answers to an assignment.",
+            "The higher education staff has provided answers to a multiple choice, boolean assignment.",
             "You have been supplied the assignment's rubrik.",
-            "Your response should ne no longer than one word.",
-            "You need to respond with the word 'no' only if the staff hasn't attempted to answer each question in the assignment. Do not answer with the word 'no' just because an answer is wrong.",
-            "If the staff has attempted to answer every question in the assignment, then respond with one of the question numbers, either the question number of one of the wrong attempts if one exists, or a question number chosen at random if all attempts were correct.",
+            "Your response should be no longer than one word.",
+            "If the staff has attempted to answer every question in the assignment, then respond with one of the question numbers. To choose the question number, choose one of a wrong attempt if a wrong attempt exists, else if all attempts were correct then respond with a question number chosen at random and add the tag (Randomly selected).",
+            "If the staff hasn't attempted to answer each question in the assignment then you need to respond with the word 'no'. Do not answer with the word 'no' for any other reason. If you are unsure then respond with a random question number and tag your response with (Randomly selected).",
             "If you cannot provide a response for some reason, then explain why.",
-            "Otherwise, keep your answer succint, it should not be more than two words long.",
+            "Otherwise, keep your answer succint, it should not be more than two words long unless you naswered 'no', then explain why.",
             "Conversation: {conversation}",
             "Rubrik : {rubrik}",
             "Response:"
@@ -90,8 +80,8 @@
         [
             "You are a coaching assistant for a higher education staff whom you are talking too.",
             "You've been supplied with the conversation so far, and the higher education's staff latest response.",
-            "The staff has provided answers to an assignment before the conversation started and you have identified that one of their answers was wrong.",
-            "You've been supplied with the assessment purpose of the question that was wrong.",
+            "The staff has provided answers to an assignment before the conversation started and you have selected one of the questions to explore in more detail.",
+            "You've been supplied with the assessment purpose of the question that was selected.",
             "Your job is to identify a UKPSF specification that relates to the wrong question's assessment purpose.",
             "The UK Professional Standards Framework (UKPSF) is a professional development framework.",
             "UKPSF specifies 5 professional values that higher education staff should have. These are:",
@@ -116,7 +106,7 @@
             "Now it's your turn to respond.",
             "You are in a direct conversation, so do not use phrases such as 'Here's my response' as these expressions would be out of place",
             "Conversation: {conversation}",
-            "Wrong question's purpose: {Assessment}",
+            "Selected question's purpose: {Assessment}",
             "Coach:"
         ],
         "Intepret UKPSF expectation" :
@@ -264,7 +254,7 @@
         "Query generation" :
         [
             "You are a search query generator tasked with providing a search query to be used on a search engine.",
-            "You'll be provided with an example query, and it's uour job to provide an edited version of the query that might improve the results.",
+            "You'll be provided with an example query, and it's your job to provide an alternative version of the query that might improve the results. Do not repeat the old query.",
             "Do not ramble and say things like 'Heres an edited version', or explanations to the choice, as these would be out of place. Be concise. Only provide the edited query.",
             "Previous query: {Previous query}",
             "Your edited query:"
@@ -273,7 +263,7 @@
         [
             "You are an evaluator trained to evaluate a response from a search engine from a given search query.",
             "You'll be provided an extract of the search engine response, and the search query used.",
-            "Your job is to reply with either 'yes' or 'no' on whether the search engine response extract contains an answer to the query.",
+            "Your job is to determine whether the search engine response extract tries to answer the query and respond with either 'yes' or 'no'.",
             "Search query used: {Query}",
             "Search engine response extract : {Documents}",
             "Your answer: "

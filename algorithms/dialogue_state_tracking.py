@@ -100,7 +100,7 @@ class DialogueStateTracking:
             assignment_info = json.load(file)
         
         assignment_choice = self._progress["Assignment choice"].lower()
-        rubrik = assignment_info["answers"][assignment_choice]
+        rubrik = assignment_info["answers"][self._RemovePunctuation(assignment_choice)]
         return "/n".join(rubrik)
     
     def _CleanSlot(self, slot):
@@ -113,11 +113,15 @@ class DialogueStateTracking:
         return interpretation if current_slot != "Assessment" else self._GetQuestionInsight(interpretation, paths["assignments"])
     
     def _GetQuestionInsight(self, intepretation, path):
-        choice = int("".join(char for char in intepretation if char.isnumeric())) - 1
-
+        choice = int("".join(char for char in intepretation if char.isnumeric()) or 2) - 1
         with open(path, 'r') as file:
             assignment_info = json.load(file)
         
         assignment_choice = self._progress["Assignment choice"].lower()
-        insight = assignment_info["explanations"][assignment_choice][choice]
+        insight = assignment_info["explanations"][self._RemovePunctuation(assignment_choice)][choice]
+        print(Fore.CYAN + f"Chosen question: {choice + 1}")
+        print(Fore.CYAN + f"Question purpose: {insight}")
         return insight
+    
+    def _RemovePunctuation(self, text):
+        return "".join([c for c in text if c.isalnum() or c.isspace()])
