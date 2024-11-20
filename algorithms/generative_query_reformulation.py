@@ -28,7 +28,7 @@ class GenerativeQueryReformulation:
             return self._current_query
         
         if current_slot == "Key questions":
-            self._current_query = f"Key questions for {memory['UKPSF expectation']}"
+            self._current_query = f"Key questions for UKPSF criterion {memory['UKPSF expectation']}"
 
         if current_slot == "Learning activities":
             self._current_query = f"Learning activities to answer {memory['Key questions']}"
@@ -47,4 +47,5 @@ class GenerativeQueryReformulation:
             "Documents" : documents
         }
         evaluation = evaluator.invoke(injections)
+        print(Fore.CYAN + "Document Content Evaluation: " + evaluation)
         return evaluation.lower()[:2] != "no"

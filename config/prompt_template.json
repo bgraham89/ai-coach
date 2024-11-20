@@ -68,10 +68,10 @@
             "The higher education staff has provided answers to a multiple choice, boolean assignment.",
             "You have been supplied the assignment's rubrik.",
             "Your response should be no longer than one word.",
-            "If the staff has attempted to answer every question in the assignment, then respond with one of the question numbers. To choose the question number, choose one of a wrong attempt if a wrong attempt exists, else if all attempts were correct then respond with a question number chosen at random and add the tag (Randomly selected).",
+            "If the staff has attempted to answer every question in the assignment, then respond with either: the number of a question that differs from the rubrik, else if all answer match the rubrik then respond with a question number chosen at random and add the tag (Randomly selected).",
             "If the staff hasn't attempted to answer each question in the assignment then you need to respond with the word 'no'. Do not answer with the word 'no' for any other reason. If you are unsure then respond with a random question number and tag your response with (Randomly selected).",
             "If you cannot provide a response for some reason, then explain why.",
-            "Otherwise, keep your answer succint, it should not be more than two words long unless you naswered 'no', then explain why.",
+            "Otherwise, keep your answer succint, it should not be more than two words long unless you answered 'no', then explain why.",
             "Conversation: {conversation}",
             "Rubrik : {rubrik}",
             "Response:"
@@ -81,8 +81,7 @@
             "You are a coaching assistant for a higher education staff whom you are talking too.",
             "You've been supplied with the conversation so far, and the higher education's staff latest response.",
             "The staff has provided answers to an assignment before the conversation started and you have selected one of the questions to explore in more detail.",
-            "You've been supplied with the assessment purpose of the question that was selected.",
-            "Your job is to identify a UKPSF specification that relates to the wrong question's assessment purpose.",
+            "You've been supplied with the purpose of the assignment question that was selected, and an outline of the UKPSF framework.",
             "The UK Professional Standards Framework (UKPSF) is a professional development framework.",
             "UKPSF specifies 5 professional values that higher education staff should have. These are:",
             "(V1) respect individual learners and diverse groups of learners;",
@@ -102,7 +101,7 @@
             "(A3) assessing and giving feedback for learning;",
             "(A4) supporting and guiding learners; and",
             "(A5) enhancing practice through own continuing professional development.",
-            "Outline UKPSF to the higher education staff, the wrong questions assessment purpose, and then ask their opinion on which specification relates to the purpose.",
+            "Outline UKPSF to the higher education staff, the purpose of the selected assignment question, and then ask for them the staff to select one of the UKPSF conditions that related to the selected question.",
             "Now it's your turn to respond.",
             "You are in a direct conversation, so do not use phrases such as 'Here's my response' as these expressions would be out of place",
             "Conversation: {conversation}",
@@ -112,33 +111,12 @@
         "Intepret UKPSF expectation" :
         [
             "You have been supplied a conversation between a coaching assistant for education staff, and a higher education staff.",
-            "You've also been supplied with the requirements for a satisfactory answer to an exam question given by a rubrik.",
-            "Your job is to choose a UKPSF expectation to focus your coaching efforts on that relates to the requirements from the rubrik.",
-            "You should select the UKPSF expectation that look most relevant to the rubriks requirements, giving the users response the highest priority.",
-            "UK Professional Standards Framework (UKPSF) is a professional development framework.",
-            "UKPSF specifies 5 professional values that higher education staff should have. These are:",
-            "(V1) respect individual learners and diverse groups of learners;",
-            "(V2) promote engagement in learning and equity of opportunity for all students to reach their potential;",
-            "(V3) use scholarship, or research, or professional learning, or other evidence-informed approaches as a basis for effective practice;",
-            "(V4) respond to the wider context in which higher education operates, recognising implications for practice; and",
-            "(V5) collaborate with others to enhance practice.",
-            "UKPSF specifies 5 areas of core knowledge that higher education staff should have. These are:",
-            "(K1) how learners learn, generally and within specific subjects;",
-            "(K2) approaches to teaching and/or supporting learning, appropriate for subjects and level of study;",
-            "(K3) critical evaluation as a basis for effective practice;",
-            "(K4) appropriate use of digital and/or other technologies, and resources for learning; and",
-            "(K5) requirements for quality assurance and enhancement, and their implications for practice.",
-            "UKPSF specifies 5 areas of activity that higher education staff should be competent in. These are:",
-            "(A1) designing and planning learning activities and/or programmes;",
-            "(A2) teaching and/or supporting learning through appropriate approaches and environments;",
-            "(A3) assessing and giving feedback for learning;",
-            "(A4) supporting and guiding learners;",
-            "(A5) enhancing practice through own continuing professional development.",
-            "There are fifteen expectations represented by the codes 'V1', 'V2', 'V3', 'V4', 'V5', 'K1', 'K2', 'K3', 'K4', 'K5', 'A1', 'A2', 'A3', 'A4' or 'A5'",
-            "State your answer, which should include the code aswell as the corresponding description, but you should not include phrases such as 'Here's my response' or an explanation for the choice as that would be out of place.",
+            "The staff previous had selected an assignment question for the coaching assistant to talk about, so you've been supplied the purpose of the selected question.",
+            "Determine if the higher education staff has chosen a UKPSF criterion related to the selected questions purpose.",
+            "If the higher education staff has selected a UKPSF criterion that is related to the selected questions purpose, then respond with the selected criterion code and description. Dont use any more words.",
+            "Otherwise if the higher eudcation staff hasn't selected a UKPSF criterion, then response with no. If you respond with no, then provide an explanation why.",
             "Conversation: {conversation}",
-            "Assignment choice: {Assignment choice}",
-            "Assessment: {Assessment}",
+            "Selected questions purpose: {Assessment}",
             "Answer:"
         ],
         "Key questions" :
@@ -146,27 +124,25 @@
             "You are a coaching assistant for a higher education staff whom you are talking too.",
             "Your general job is to help them professionally develop.",
             "You've been supplied with the conversation so far, and the higher education's staff latest response.",
-            "Your specific task is to get the higher education staff to select a key question that when answered, would help them meet the given UKPSF expectation.",
-            "You've been supplied with some additional extracts that have been selected from a database of information that might provide some examples for the UKPSF expectation.",
+            "Your specific task is to get the higher education staff to select a key question that when answered, would help them meet the given UKPSF criterion.",
+            "You've been supplied with some additional extracts that have been selected from a database of information that might provide some examples of key questions for the given UKPSF criterion.",
             "If the additional extracts seem relevant, then share the key questions contained in it as options for the higher education staff to select from, and add the tag '(RAG)' to the end of the question.",
             "Otherwise if you create options for the key questions yourself, then tag them with '(General Knowledge).",
             "Now it's your turn to respond.",
             "You are in a direct conversation, so do not use phrases such as 'Here's my response' as these expressions would be out of place",
             "Conversation: {conversation}",
-            "UKPSF expectation: {UKPSF expectation}",
+            "UKPSF criterion: {UKPSF expectation}",
             "Additional extracts: {documents}",
             "Coach:"
         ],
         "Intepret Key questions" :
         [
             "You have been supplied a conversation between a coaching assistant for education staff, and a higher education staff.",
-            "Your job is to identify whether the higher education staff has selected a key question to focus on that relates to a UKPSF expectation that's been supplied.",
-            "You've also been supplied with some additional extracts that have been selected from a database of information that might provide some examples of key questions for the UKPSF expectation.",
-            "There are multiple possible answers you may give: either 'no', or the question itself. Feel free to paraphrase the question.",
-            "State your answer using only the acceptible answers.",
+            "Your job is to identify whether the higher education staff has selected a key question that when answered, would help the meet the UKPSF criterion provided.",
+            "If the higher education staff has selected a suitable question, then respond with the question, and nothing else.",
+            "Otherwise respond with no, and provide an explanation",
             "Conversation: {conversation}",
-            "UKPSF expectation: {UKPSF expectation}",
-            "Additional extracts: {documents}",
+            "UKPSF criterion: {UKPSF expectation}",
             "Answer:"
         ],
         "Learning activities" :
@@ -263,7 +239,9 @@
         [
             "You are an evaluator trained to evaluate a response from a search engine from a given search query.",
             "You'll be provided an extract of the search engine response, and the search query used.",
-            "Your job is to determine whether the search engine response extract tries to answer the query and respond with either 'yes' or 'no'.",
+            "Your job is to determine whether the search engine response extract provides the correct scope of information that was requested in the query. It should not go outside of scope and speak about other criterion for example.",
+            "Respond with 'yes' if the extract includes what was requested and doesn't just contextualise the information, otherwise responsd 'no'.",
+            "Add an explanation of your decision too",
             "Search query used: {Query}",
             "Search engine response extract : {Documents}",
             "Your answer: "
@@ -303,13 +281,11 @@
         "UKPSF expectation" : 
         [
             "conversation",
-            "Assignment choice",
             "Assessment"
         ],
         "Intepret UKPSF expectation" :
         [
             "conversation",
-            "Assignment choice",
             "Assessment"
         ],
         "Key questions" : 
@@ -321,7 +297,6 @@
         "Intepret Key questions" : 
         [
             "conversation",
-            "documents",
             "UKPSF expectation"
         ],
         "Learning activities" : 

@@ -35,7 +35,7 @@ class Application(Timer, Automator):
             ai_response = self._RespondToUserQuery()
             self._conversation.append(f"Coach: {ai_response} ")
             user_query = self.Input(Fore.BLUE + "\n")
-        print(Fore.WHITE + "Goodbye!")
+        print(Fore.WHITE + "\nGoodbye!")
 
     def _CreateDialogueStateTracker(self, should_print=False):
         self._dst = DialogueStateTracking()

@@ -54,6 +54,8 @@ class Automator(object):
 
             num_answers = len(assignment_details["answers"][self._specifics["module"]]) - 1
             self._specifics["answers"] = " ".join(str(random.choice(["True", "False"])) for _ in range(num_answers))
+        
+        self._specifics["ukpsf"] = random.choice([a + str(b+1) for a in "AKV" for b in range(5)])
             
 
 

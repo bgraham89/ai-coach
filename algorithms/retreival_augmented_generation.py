@@ -9,8 +9,8 @@ class RetreivalAugmentedGeneration:
     
     def __init__(self):
         self.API_KEY_PATH = "./api.key"
-        self.DEFAULT_CHUNK_SIZE = 100
-        self.DEFAULT_CHUNK_OVERLAP = 50
+        self.DEFAULT_CHUNK_SIZE = 200
+        self.DEFAULT_CHUNK_OVERLAP = 100
         self.DEFAULT_QUERY = ""
 
     def StorePDFs(self, pdf_directory):
