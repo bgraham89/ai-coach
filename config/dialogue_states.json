@@ -5,7 +5,7 @@
         "Stage 1: Identify the staff's personal goal",
         "Stage 2: Identify the cultural expectations related to the staff's personal goal",
         "Stage 3: Devise a learning agenda to fulfil the goal",
-        "Stage 4: Practise the learning agenda",
+        "Stage 4: Practice the learning agenda",
         "Stage 5: Identify roles that support fulfilment of the goal"
     ],
     "slots" :
@@ -25,7 +25,7 @@
             "Key questions",
             "Learning activities"
         ],
-        "Stage 4: Practise the learning agenda" : 
+        "Stage 4: Practice the learning agenda" : 
         [
             "Proof of mastery"
         ],

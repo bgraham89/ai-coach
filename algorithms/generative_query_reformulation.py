@@ -34,7 +34,7 @@ class GenerativeQueryReformulation:
             self._current_query = f"Learning activities to answer {memory['Key questions']}"
 
         if current_slot == "Proof of mastery":
-            self._current_query = f"Practise {memory['Learning activities']}"
+            self._current_query = f"Practice {memory['Learning activities']}"
         
         if current_slot == "Supporting roles":
             self._current_query = f"Supporting roles for {memory['UKPSF expectation']}"

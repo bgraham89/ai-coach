@@ -11,7 +11,7 @@
             "Conversation: {conversation}",
             "Coach:" 
         ],
-        "Intepret Use case" :
+        "Comprehend Use case" :
         [
             "You have been supplied a conversation between a coaching assistant for higher education staff, and a higher education staff.",
             "Your job is to identify whether the higher education staff has shared a preference between revising, or learning new information on how to professionally develop further.",
@@ -36,16 +36,26 @@
             "Assignment options: {assignments}",
             "Coach:"
         ],
-        "Intepret Assignment choice" :
+        "Comprehend Assignment choice" :
         [
-            "You have been supplied a conversation between a coaching assistant for higher education staff, and a higher education staff.",
-            "You have also been supplied with assignment titles and your job is to identify whether the higher education staff has shared the name or number of one of those assignments.",
-            "An acceptable assessment is one titled with one of the supplied assessment titles",
-            "The possible answers: are 'no' or one of the assignment titles. The assignment title must be written fully.",
-            "State your answer using only the acceptible answers. Do not use any other words.",
-            "Conversation: {conversation}",
-            "Assignment Options: {assignments}",
-            "Answer:"
+            [
+                "Looking at the supplied conversation and assignment options, has the higher education staff chosen 'Becoming an engaging teacher'?",
+                "Conversation: {conversation}",
+                "Assignment Options: {assignments}",
+                "Answer:"
+            ],
+            [
+                "Looking at the supplied conversation and assignment options, has the higher education staff chosen 'Designing curricula and learning environments'?",
+                "Conversation: {conversation}",
+                "Assignment Options: {assignments}",
+                "Answer:"
+            ],
+            [
+                "Looking at the supplied conversation and assignment options, has the higher education staff chosen 'Emerging issues in academic practice'?",
+                "Conversation: {conversation}",
+                "Assignment Options: {assignments}",
+                "Answer:"
+            ]
         ],
         "Assessment" :
         [
@@ -62,19 +72,55 @@
             "Assignment choice: {Assignment choice}",
             "Coach:"
         ],
-        "Intepret Assessment" :
+        "Comprehend Assessment" :
         [
-            "You have been supplied a conversation between a coaching assistant for higher education staff, and a higher education staff.",
-            "The higher education staff has provided answers to a multiple choice, boolean assignment.",
-            "You have been supplied the assignment's rubrik.",
-            "Your response should be no longer than one word.",
-            "If the staff has attempted to answer every question in the assignment, then respond with either: the number of a question that differs from the rubrik, else if all answer match the rubrik then respond with a question number chosen at random and add the tag (Randomly selected).",
-            "If the staff hasn't attempted to answer each question in the assignment then you need to respond with the word 'no'. Do not answer with the word 'no' for any other reason. If you are unsure then respond with a random question number and tag your response with (Randomly selected).",
-            "If you cannot provide a response for some reason, then explain why.",
-            "Otherwise, keep your answer succint, it should not be more than two words long unless you answered 'no', then explain why.",
-            "Conversation: {conversation}",
-            "Rubrik : {rubrik}",
-            "Response:"
+            [
+                "Has the higher education staff supplied four answers?",
+                "Answer with either yes or no.",
+                "conversation: {conversation}",
+                "reponse: "
+            ],
+            [
+                "what is the staffs answer to question 1?",
+                "conversation: {conversation}",
+                "reponse: "
+            ],
+            [
+                "what is the rubriks answer to question 1?",
+                "assignments rubrik: {rubrik}",
+                "reponse: "
+            ],
+            [
+                "what is the staffs answer to question 2?",
+                "conversation: {conversation}",
+                "reponse: "
+            ],
+            [
+                "what is the rubriks answer to question 2?",
+                "assignments rubrik: {rubrik}",
+                "reponse: "
+            ],
+            [
+                "what is the staffs answer to question 3?",
+                "conversation: {conversation}",
+                "reponse: "
+            ],
+            [
+                "what is the rubriks answer to question 3?",
+                "assignments rubrik: {rubrik}",
+                "reponse: "
+            ],
+            [
+                "what is the staffs answer to question 4?",
+                "conversation: {conversation}",
+                "reponse: "
+            ],
+            [
+                "what is the rubriks answer to question 4?",
+                "assignments rubrik: {rubrik}",
+                "reponse: "
+            ]
+            
         ],
         "UKPSF expectation" :
         [
@@ -108,7 +154,7 @@
             "Selected question's purpose: {Assessment}",
             "Coach:"
         ],
-        "Intepret UKPSF expectation" :
+        "Comprehend UKPSF expectation 2" :
         [
             "You have been supplied a conversation between a coaching assistant for education staff, and a higher education staff.",
             "The staff previous had selected an assignment question for the coaching assistant to talk about, so you've been supplied the purpose of the selected question.",
@@ -118,6 +164,51 @@
             "Conversation: {conversation}",
             "Selected questions purpose: {Assessment}",
             "Answer:"
+        ],
+        "Comprehend UKPSF expectation" :
+        [
+            [
+                "Which is the first UKPSF expectation related to the assignment question?",
+                "Answer with the expectation codes.",
+                "Assignment questions information: {Assessment}",
+                "reponse: "
+            ],
+            [
+                "Which is the second UKPSF expectation related to the assignment question?",
+                "Answer with the expectation codes.",
+                "Assignment questions information: {Assessment}",
+                "reponse: "
+            ],
+            [
+                "Which is the third UKPSF expectation related to the assignment question?",
+                "Answer with the expectation codes.",
+                "Assignment questions information: {Assessment}",
+                "reponse: "
+            ],
+            [
+                "Which is the forth UKPSF expectation related to the assignment question?",
+                "Answer with the expectation codes.",
+                "Assignment questions information: {Assessment}",
+                "reponse: "
+            ],
+            [
+                "Which is the fifth UKPSF expectation related to the assignment question?",
+                "Answer with the expectation codes.",
+                "Assignment questions information: {Assessment}",
+                "reponse: "
+            ],
+            [
+                "Has the staff provided a UKPSF expectation code?",
+                "Answer with either yes or no.",
+                "conversation: {conversation}",
+                "reponse: "
+            ],
+            [
+                "Which UKPSF expectation code has the staff specified?",
+                "Answer with the expectation codes.",
+                "conversation: {conversation}",
+                "reponse: "
+            ]
         ],
         "Key questions" :
         [
@@ -135,7 +226,7 @@
             "Additional extracts: {documents}",
             "Coach:"
         ],
-        "Intepret Key questions" :
+        "Comprehend Key questions" :
         [
             "You have been supplied a conversation between a coaching assistant for education staff, and a higher education staff.",
             "Your job is to identify whether the higher education staff has selected a key question that when answered, would help the meet the UKPSF criterion provided.",
@@ -161,7 +252,7 @@
             "Additional extracts: {documents}",
             "Coach:"
         ],
-        "Intepret Learning activities" :
+        "Comprehend Learning activities" :
         [
             "You have been supplied a conversation between a coaching assistant for education staff, and a higher education staff.",
             "Your job is to identify whether the higher education staff has selected a learning activity to focus on that relates to the key questions that's been supplied.",
@@ -187,7 +278,7 @@
             "Additional extracts: {documents}",
             "Coach:"
         ],
-        "Intepret Proof of mastery" :
+        "Comprehend Proof of mastery" :
         [
             "You have been supplied a conversation between a coaching assistant for education staff, and a higher education staff.",
             "Your job is to identify whether the higher education staff has fully completed their learning activity",
@@ -215,7 +306,7 @@
             "Additional extracts: {documents}",
             "Coach:"
         ],
-        "Intepret Supporting roles" :
+        "Comprehend Supporting roles" :
         [
             "You have been supplied a conversation between a coaching assistant for education staff, and a higher education staff.",
             "Your job is to identify whether the higher education staff has identified a supporting role for their professiona goal, stated as a UKPSF expecation",
@@ -253,7 +344,7 @@
         [ 
             "conversation"
         ],
-        "Intepret Use case" :
+        "Comprehend Use case" :
         [
             "conversation"
         ],
@@ -262,7 +353,7 @@
             "conversation",
             "assignments"
         ],
-        "Intepret Assignment choice" :
+        "Comprehend Assignment choice" :
         [
             "conversation",
             "assignments"
@@ -272,7 +363,7 @@
             "conversation",
             "Assignment choice"
         ],
-        "Intepret Assessment" :
+        "Comprehend Assessment" :
         [
             "conversation",
             "Assignment choice",
@@ -283,7 +374,7 @@
             "conversation",
             "Assessment"
         ],
-        "Intepret UKPSF expectation" :
+        "Comprehend UKPSF expectation" :
         [
             "conversation",
             "Assessment"
@@ -294,7 +385,7 @@
             "documents",
             "UKPSF expectation"
         ],
-        "Intepret Key questions" : 
+        "Comprehend Key questions" : 
         [
             "conversation",
             "UKPSF expectation"
@@ -305,7 +396,7 @@
             "documents",
             "Key questions"
         ],
-        "Intepret Learning activities" : 
+        "Comprehend Learning activities" : 
         [
             "conversation",
             "documents",
@@ -317,7 +408,7 @@
             "documents",
             "Learning activities"
         ],
-        "Intepret Proof of mastery" :
+        "Comprehend Proof of mastery" :
         [
             "conversation",
             "documents",
@@ -329,7 +420,7 @@
             "documents",
             "UKPSF expectation"
         ],
-        "Intepret Supporting roles" :
+        "Comprehend Supporting roles" :
         [
             "conversation",
             "documents",
@@ -343,6 +434,68 @@
         [
             "Query",
             "Documents"
+        ]
+    },
+    "has_chain_of_thought" :
+    {
+        "Comprehend Use case" : "False",
+        "Comprehend Assignment choice" : "True",
+        "Comprehend Assessment" : "True",
+        "Comprehend UKPSF expectation" : "True",
+        "Comprehend Key questions" : "False",
+        "Comprehend Learning activities" : "False",
+        "Comprehend Proof of mastery" : "False",
+        "Comprehend Supporting roles" : "False"
+    },
+    "reasoning" :
+    {
+        "Comprehend Assignment choice" : 
+        [
+            "You have been supplied a series of questions and the answers to those questions.",
+            "If the answer to any of those questions yes, reply with the corresponding name of assignment mentioned in that question.",
+            "Otherwise reply with no.",
+            "Do not include anything else in your response, it needs to be succinct.",
+            "Conversation: {conversation}",
+            "Response: " 
+        ],
+        "Comprehend Assessment" : 
+        [
+            "You have been supplied a series of questions and the answers to those questions.",
+            "If the answer to the question 'Did the higher education staff supply enough answers?' was said to be no, reply with 'No'.",
+            "If the answer to assignment question 1 that's supplied by the staff is different to the answer to question 1 given by the assignment rubrik, then reply with '1.'.",
+            "If the answer to assignment question 2 that's supplied by the staff is different to the answer to question 2 given by the assignment rubrik, then reply with '2.'.",
+            "If the answer to assignment question 3 that's supplied by the staff is different to the answer to question 3 given by the assignment rubrik, then reply with '3.'.",
+            "If the answer to assignment question 4 that's supplied by the staff is different to the answer to question 4 given by the assignment rubrik, then reply with '4.'.",
+            "Otherwise reply with 'No.'",
+            "Conversation: {conversation}",
+            "Response: " 
+        ],
+        "Comprehend UKPSF expectation" : 
+        [
+            "You have been supplied a list of UKPSF codes and descriptions.",
+            "(V1) respect individual learners and diverse groups of learners;",
+            "(V2) promote engagement in learning and equity of opportunity for all students to reach their potential;",
+            "(V3) use scholarship, or research, or professional learning, or other evidence-informed approaches as a basis for effective practice;",
+            "(V4) respond to the wider context in which higher education operates, recognising implications for practice; and",
+            "(V5) collaborate with others to enhance practice.",
+            "UKPSF specifies 5 areas of core knowledge that higher education staff should have. These are:",
+            "(K1) how learners learn, generally and within specific subjects;",
+            "(K2) approaches to teaching and/or supporting learning, appropriate for subjects and level of study;",
+            "(K3) critical evaluation as a basis for effective practice;",
+            "(K4) appropriate use of digital and/or other technologies, and resources for learning; and",
+            "(K5) requirements for quality assurance and enhancement, and their implications for practice.",
+            "UKPSF specifies 5 areas of activity that higher education staff should be competent in. These are:",
+            "(A1) designing and planning learning activities and/or programmes;",
+            "(A2) teaching and/or supporting learning through appropriate approaches and environments;",
+            "(A3) assessing and giving feedback for learning;",
+            "(A4) supporting and guiding learners; and",
+            "(A5) enhancing practice through own continuing professional development.",
+            "You have also been supplied a series of questions and the answers to those questions.",
+            "If the answer to the question 'Did the higher education staff supply a UKPSF expectation' was said to be no, reply with 'No'.",
+            "If the answer to the question 'Which UKPSF code did the higher education staff select' matches any of the codes to the answer of the question 'Which UKPSF codes relate to the assignment question', then reply with the UKPSF code and it's description.",
+            "Otherwise reply with 'No.'",
+            "Conversation: {conversation}",
+            "Response: " 
         ]
     }
 }

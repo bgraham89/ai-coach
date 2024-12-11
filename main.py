@@ -31,7 +31,7 @@ class Application(Timer, Automator):
         self._conversation = self._dst.GetNewConversation()
         while user_query:
             self._conversation.append(f"Higher Education Staff: {user_query} ")
-            self._IntepretUserQuery()
+            self._ComprehendUserQuery()
             ai_response = self._RespondToUserQuery()
             self._conversation.append(f"Coach: {ai_response} ")
             user_query = self.Input(Fore.BLUE + "\n")
@@ -52,11 +52,11 @@ class Application(Timer, Automator):
         self._retriever = self._rag._retriever
         self.Print("Vector Database Created.", should_print)
     
-    def _CreatePromptTemplate(self, should_print=False, for_intepreter=False):
+    def _CreatePromptTemplate(self, should_print=False, for_comprehension=False, is_cot=False, cot_index=0, is_cot_final_stage=False):
         self._prompt_template = PromptTemplate(
-            template = self._dst.GetPromptTemplate(self.PROMPT_TEMPLATE_PATH, for_intepreter),
-            input_variables = self._dst.GetInjectionVariables(self.PROMPT_TEMPLATE_PATH)
-        )
+                template = self._dst.GetPromptTemplate(self.PROMPT_TEMPLATE_PATH, for_comprehension, is_cot, cot_index, is_cot_final_stage),
+                input_variables = self._dst.GetInjectionVariables(self.PROMPT_TEMPLATE_PATH)
+            )
         self.Print("Prompt Template Created.", should_print)
     
     def _CreatePretrainedModel(self, should_print=False):
@@ -66,11 +66,16 @@ class Application(Timer, Automator):
         )
         self.Print("Pretrained Model Created.", should_print)
     
-    def _CreateResponder(self, should_print=False, for_intepretation=False):
-        self._CreatePromptTemplate(should_print, for_intepretation)
+    def _CreateResponder(self, should_print=False, for_comprehension=False, is_cot=False, cot_index=0):
+        self._CreatePromptTemplate(should_print, for_comprehension, is_cot, cot_index)
         self._responder = self._prompt_template | self._pretrained_model | StrOutputParser()
-        if not for_intepretation:
+        if not for_comprehension:
             self.Print("AI Coach Created.", should_print)
+
+    def _CreateReasoner(self, should_print=False):
+        self._CreatePromptTemplate(should_print, for_comprehension=True, is_cot=True, cot_index=0, is_cot_final_stage=True)
+        self._responder = self._prompt_template | self._pretrained_model | StrOutputParser()
+        self.Print("Reasoner Created.", should_print)
 
     def _GetPaths(self):
         paths = {
@@ -107,8 +112,16 @@ class Application(Timer, Automator):
         response = self._responder.invoke(prompt_injections)
         return response
     
-    def _IntepretUserQuery(self):
-        self._CreateResponder(for_intepretation=True)
+    def _ComprehendUserQuery(self):
+        useChainOfThought = self._dst.ShouldUseChainOfThought(self.PROMPT_TEMPLATE_PATH)
+        if not useChainOfThought:
+            self._SingleShotComprehension()
+            return
+        
+        self._ChainOfThoughtComprehension()
+    
+    def _SingleShotComprehension(self):
+        self._CreateResponder(for_comprehension=True)
         user_query = self._conversation[-1][24:]
         print(Fore.WHITE + f"User: '{user_query}'")
         documents = self._GetDocumentText()
@@ -116,10 +129,34 @@ class Application(Timer, Automator):
         response = self._GenerateResponse(prompt_injections)
         if self._dst.FillSlot(response, self._GetPaths()):
             self._conversation = self._dst.GetNewConversation() + self._conversation[-1:]
-        print(Fore.GREEN + f"(Slot intepreted?: {response})")
+        print(Fore.GREEN + f"(Slot comprehended?: {response})")
+
+    def _ChainOfThoughtComprehension(self):
+        user_query = self._conversation[-1][24:]
+        print(Fore.WHITE + f"User: '{user_query}'")
+        cot_index = 0
+        chain_of_thought = []
+        while True:
+            self._CreateResponder(for_comprehension=True, is_cot=True, cot_index=cot_index)
+            if not self._prompt_template.template:
+                self._CreateReasoner()
+                documents = self._GetDocumentText()
+                prompt_injections = self._dst.AddPromptInjections(chain_of_thought, documents, self._GetPaths())
+                response = self._GenerateResponse(prompt_injections)
+                if self._dst.FillSlot(response, self._GetPaths()):
+                    self._conversation = self._dst.GetNewConversation() + self._conversation[-1:]
+                print(Fore.GREEN + f"(Slot comprehended?: {response})")
+                break
+            documents = self._GetDocumentText()
+            prompt_injections = self._dst.AddPromptInjections(self._conversation, documents, self._GetPaths())
+            response = self._GenerateResponse(prompt_injections)
+            chain_of_thought.append(self._prompt_template.template)
+            chain_of_thought.append(response)
+            print(Fore.CYAN + "Thoughts: " + response)
+            cot_index += 1
 
     def _RespondToUserQuery(self):
-        self._CreateResponder(for_intepretation=False)
+        self._CreateResponder(for_comprehension=False)
         documents = self._GetDocumentText()
         prompt_injections = self._dst.AddPromptInjections(self._conversation, documents, self._GetPaths())
         response = self._GenerateResponse(prompt_injections)

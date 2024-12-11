@@ -3,7 +3,7 @@
     [
         "Becoming an engaging teacher",
         "Designing curricula and learning environments", 
-        "Emerging issues in academic practise"
+        "Emerging issues in academic practice"
     ],
     "answers" :
     {
@@ -23,7 +23,7 @@
             "The answer to Question 3 should be 'true'.",
             "The answer to Question 4 should be 'true'."
         ],
-        "emerging issues in academic practise" : 
+        "emerging issues in academic practice" : 
         [
             "There should be four answers in total.",
             "The answer to Question 1 should be 'true'.",
@@ -37,8 +37,8 @@
         "becoming an engaging teacher" : 
         [
             "Question 1 aims to help staff demonstrate a critical understanding of the key concepts and theories around educational relationships and engagement. It's linked to UKPSF criteria A2, A4, K2, V1, and V5.",
-            "Question 2 aims to help staff show that they can apply concepts and theories from relevant research to enhance their own academic practise. It's linked to UKPSF criteria A1, A2, A3, A5, K2, K3, K4, V1, V2, and V5.",
-            "Question 3 aims to help staff demonstrate the ability to analyse teaching approaches and evaluate a range of options to ensure their practise is inclusive. It's linked to UKPSF criteria A1, A2, A5, K1, K3, K5, V1, V2, and V4.",
+            "Question 2 aims to help staff show that they can apply concepts and theories from relevant research to enhance their own academic practice. It's linked to UKPSF criteria A1, A2, A3, A5, K2, K3, K4, V1, V2, and V5.",
+            "Question 3 aims to help staff demonstrate the ability to analyse teaching approaches and evaluate a range of options to ensure their practice is inclusive. It's linked to UKPSF criteria A1, A2, A5, K1, K3, K5, V1, V2, and V4.",
             "Question 4 aims to help staff critically reflect on their own growth as a teacher. It's linked to UKPSF criteria A5, V3, and V5."
         ],
         "designing curricula and learning environments" : 
@@ -48,7 +48,7 @@
             "Question 3 aims to help staff critically reflect on the impact of different course design approaches on inclusive learning. It's linked to UKPSF criteria A1, K1, K2, K4, V1, V2, and V4.",
             "Question 4 aims to help staff evaluate different approaches to course design in light of University strategicpriorities and the wider purposes of highereducation. It's linked to UKPSF criteria A5, K2, K3, V3, and V4."
         ],
-        "emerging issues in academic practise" : 
+        "emerging issues in academic practice" : 
         [
             "Question 1 aims to help staff propose and undertake an independent and self-driven learning and teaching project on a topic of your choosing. It's linked to UKPSF criteria A1, A2, A4, A5, K2, K3, K5, V1, and V3.",
             "Question 2 aims to help staff critically evaluate and synthesise the knowledge base relevant to your project. It's linked to UKPSF criteria A3, K1, K2, K4, V3, and V4.",

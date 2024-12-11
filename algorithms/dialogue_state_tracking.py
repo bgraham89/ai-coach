@@ -19,13 +19,27 @@ class DialogueStateTracking:
         self._slots.update(specification["slots"])
         self._progress.update({ slot : False for frame, slots in specification["slots"].items() for slot in slots})
 
-    def GetPromptTemplate(self, template_path, for_intepreter=False):
+    def GetPromptTemplate(self, template_path, for_comprehension=False, is_cot=False, cot_index=0, is_cot_final_stage=False):
         with open(template_path, 'r') as file:
             script = json.load(file)
 
-        self._current_frame, self._current_slot = self.GetCurrentFrame(for_intepreter)
-        for_intepreter and print(Fore.YELLOW + f"\nCurrent Frame: {self._current_frame} (Slot: {self._current_slot[9:]})") # Remove "Intepret "
-        return "".join(script["templates"][self._current_slot])
+        self._current_frame, self._current_slot = self.GetCurrentFrame(for_comprehension)
+        
+        if not is_cot:
+            for_comprehension and print(Fore.YELLOW + f"\nCurrent Frame: {self._current_frame} (Slot: {self._current_slot[11:]})") # Remove "Comprehend "
+            return "".join(script["templates"][self._current_slot])
+
+        if not is_cot_final_stage:
+            templates = script["templates"][self._current_slot]
+            if cot_index >= len(templates):
+                return ""
+            return "".join(templates[cot_index])
+        
+        return "".join(script["reasoning"][self._current_slot])
+
+        
+        
+        
 
     def GetInjectionVariables(self, template_path):
         with open(template_path, 'r') as file:
@@ -39,10 +53,10 @@ class DialogueStateTracking:
                 return self._CleanSlot(slot) if should_clean else slot
         return ""
     
-    def GetCurrentFrame(self, for_interpreter=False, should_clean=False):
+    def GetCurrentFrame(self, for_comprehension=False, should_clean=False):
         for frame in self._frames:
             if slot := self.GetCurrentSlot(frame, should_clean):
-                return frame, "Intepret " + slot if for_interpreter else slot
+                return frame, "Comprehend " + slot if for_comprehension else slot
         print("DEBUG: Could not deduce current frame and slot")
         return "", ""
     
@@ -74,6 +88,15 @@ class DialogueStateTracking:
     
     def ShouldUseRAG(self, template_path):
         return "documents" in self.GetInjectionVariables(template_path)
+    
+    def ShouldUseChainOfThought(self, template_path):
+        with open(template_path, 'r') as file:
+            script = json.load(file)
+
+        self._current_frame, self._current_slot = self.GetCurrentFrame(True)
+        should_use_cof = script["has_chain_of_thought"][self._current_slot] == "True"
+        should_use_cof and print(Fore.CYAN + f"Using Chain Of Thought")
+        return should_use_cof
 
     def GetNewConversation(self):
         return ["The conversation start's now."]
@@ -81,12 +104,12 @@ class DialogueStateTracking:
     def ApproveDocuments(self, documents):
         return True
     
-    def FillSlot(self, intepretation, paths):
-        if "no" == intepretation.lower()[:2]:
+    def FillSlot(self, comprehension, paths):
+        if "no" == comprehension.lower()[:2]:
             return False
         
         current_frame, current_slot = self.GetCurrentFrame()
-        self._progress[current_slot] = self._CleanIntepretation(intepretation, paths)
+        self._progress[current_slot] = self._CleanComprehension(comprehension, paths)
         return True
     
     def _GetAssignmentTitles(self, template_path):
@@ -104,23 +127,22 @@ class DialogueStateTracking:
         return "/n".join(rubrik)
     
     def _CleanSlot(self, slot):
-        if len(slot) > 9 and slot[:8] == "Intepret":
-            slot = slot[9:]
+        if len(slot) > 11 and slot[:10] == "Comprehend":
+            slot = slot[10:]
         return slot
     
-    def _CleanIntepretation(self, interpretation, paths):
+    def _CleanComprehension(self, comprehension, paths):
         current_frame, current_slot = self.GetCurrentFrame()
-        return interpretation if current_slot != "Assessment" else self._GetQuestionInsight(interpretation, paths["assignments"])
+        return comprehension if current_slot != "Assessment" else self._GetQuestionInsight(comprehension, paths["assignments"])
     
-    def _GetQuestionInsight(self, intepretation, path):
-        choice = int("".join(char for char in intepretation if char.isnumeric()) or 2) - 1
+    def _GetQuestionInsight(self, comprehension, path):
+        choice = int("".join(char for char in comprehension if char.isnumeric())) - 1
         with open(path, 'r') as file:
             assignment_info = json.load(file)
         
         assignment_choice = self._progress["Assignment choice"].lower()
-        insight = assignment_info["explanations"][self._RemovePunctuation(assignment_choice)][choice]
-        print(Fore.CYAN + f"Chosen question: {choice + 1}")
-        print(Fore.CYAN + f"Question purpose: {insight}")
+        insight = assignment_info["explanations"][self._RemovePunctuation(assignment_choice)][choice % 4]
+        print(Fore.RED + f"Insight: {insight}")
         return insight
     
     def _RemovePunctuation(self, text):
