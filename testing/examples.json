@@ -1,49 +1,38 @@
 {
     "responses" : 
     {
-        "dismissive-0" :
+        "case-0" :
         [
             "no thanks",
             "not interested",
             "I don't know",
             ""
         ],
-        "dismissive-1" :
+        "case-1" :
         [
             "Yes, I'm looking to revise.",
             "not interested",
             "I don't know",
             ""
         ],
-        "dismissive-2" :
-        [
-            "Yes, I'm looking to revise.",
-            "I've completed >module<.",
-            "not interested",
-            "I don't know",
-            ""
-        ],
-        "dismissive-3" :
+        "case-2" :
         [
             "Yes, I'm looking to revise.",
             "I've completed >module<.",
-            "Here's my answers: >answers<",
             "not interested",
             "I don't know",
             ""
         ],
-        "dismissive-3-1" :
+        "case-3" :
         [
             "Yes, I'm looking to revise.",
             "I've completed >module<.",
             "Here's my answers: >answers<",
             "not interested",
             "I don't know",
-            "What do I need to do again?",
-            ">ukpsf<",
             ""
         ],
-        "dismissive-4" :
+        "case-4" :
         [
             "Yes, I'm looking to revise.",
             "I've completed >module<.",
@@ -53,12 +42,48 @@
             "I don't know",
             ""
         ],
-        "revise" :
+        "case-5" :
         [
             "Yes, I'm looking to revise.",
-            "I've completed >module<.", 
+            "I've completed >module<.",
             "Here's my answers: >answers<",
             ">ukpsf<",
+            "the first one",
+            "none",
+            ""
+        ],
+        "case-6" :
+        [
+            "Yes, I'm looking to revise.",
+            "I've completed >module<.",
+            "Here's my answers: >answers<",
+            ">ukpsf<",
+            "the first one",
+            "the first one",
+            ""
+        ],
+        "case-7" :
+        [
+            "Yes, I'm looking to revise.",
+            "I've completed >module<.",
+            "Here's my answers: >answers<",
+            ">ukpsf<",
+            "the first one",
+            "the first one",
+            "I'm done",
+            "Nope",
+            ""
+        ],
+        "case-8" :
+        [
+            "Yes, I'm looking to revise.",
+            "I've completed >module<.",
+            "Here's my answers: >answers<",
+            ">ukpsf<",
+            "the first one",
+            "the first one",
+            "I'm done",
+            "My boss",
             ""
         ]
     }

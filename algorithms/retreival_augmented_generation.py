@@ -5,9 +5,12 @@ from langchain_community.document_loaders import PyPDFLoader
 from langchain_community.vectorstores import SKLearnVectorStore
 from langchain_openai import OpenAIEmbeddings
 
-class RetreivalAugmentedGeneration:
+from testing.timer import Timer
+
+class RetreivalAugmentedGeneration(Timer):
     
     def __init__(self):
+        super().__init__()
         self.API_KEY_PATH = "./api.key"
         self.DEFAULT_CHUNK_SIZE = 200
         self.DEFAULT_CHUNK_OVERLAP = 100

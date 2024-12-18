@@ -1,9 +1,11 @@
 import json
 from colorama import Fore, Back, Style
+from testing.timer import Timer
 
-class GenerativeQueryReformulation:
+class GenerativeQueryReformulation(Timer):
     
     def __init__(self):
+        super().__init__()
         self._attempt_number = 1
         self._current_query = ""
 
@@ -47,5 +49,5 @@ class GenerativeQueryReformulation:
             "Documents" : documents
         }
         evaluation = evaluator.invoke(injections)
-        print(Fore.CYAN + "Document Content Evaluation: " + evaluation)
+        self.Print(Fore.CYAN + "Document Content Evaluation: " + evaluation)
         return evaluation.lower()[:2] != "no"

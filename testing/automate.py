@@ -9,7 +9,7 @@ class Automator(object):
         self.TEST_CASES_PATH = "./testing/examples.json"
         self.ASSIGNMENTS_TEMPLATE_PATH = "./config/assignments.json"
         self._inputs = []
-        self._case = "revise"
+        self._case = "case-2"
         self._specifics = {}
         super().__init__()
 

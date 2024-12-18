@@ -154,46 +154,35 @@
             "Selected question's purpose: {Assessment}",
             "Coach:"
         ],
-        "Comprehend UKPSF expectation 2" :
-        [
-            "You have been supplied a conversation between a coaching assistant for education staff, and a higher education staff.",
-            "The staff previous had selected an assignment question for the coaching assistant to talk about, so you've been supplied the purpose of the selected question.",
-            "Determine if the higher education staff has chosen a UKPSF criterion related to the selected questions purpose.",
-            "If the higher education staff has selected a UKPSF criterion that is related to the selected questions purpose, then respond with the selected criterion code and description. Dont use any more words.",
-            "Otherwise if the higher eudcation staff hasn't selected a UKPSF criterion, then response with no. If you respond with no, then provide an explanation why.",
-            "Conversation: {conversation}",
-            "Selected questions purpose: {Assessment}",
-            "Answer:"
-        ],
         "Comprehend UKPSF expectation" :
         [
             [
                 "Which is the first UKPSF expectation related to the assignment question?",
-                "Answer with the expectation codes.",
+                "Answer with the expectation code.",
                 "Assignment questions information: {Assessment}",
                 "reponse: "
             ],
             [
                 "Which is the second UKPSF expectation related to the assignment question?",
-                "Answer with the expectation codes.",
+                "Answer with the expectation code.",
                 "Assignment questions information: {Assessment}",
                 "reponse: "
             ],
             [
                 "Which is the third UKPSF expectation related to the assignment question?",
-                "Answer with the expectation codes.",
+                "Answer with the expectation code.",
                 "Assignment questions information: {Assessment}",
                 "reponse: "
             ],
             [
                 "Which is the forth UKPSF expectation related to the assignment question?",
-                "Answer with the expectation codes.",
+                "Answer with the expectation code.",
                 "Assignment questions information: {Assessment}",
                 "reponse: "
             ],
             [
                 "Which is the fifth UKPSF expectation related to the assignment question?",
-                "Answer with the expectation codes.",
+                "Answer with the expectation code.",
                 "Assignment questions information: {Assessment}",
                 "reponse: "
             ],
@@ -204,8 +193,8 @@
                 "reponse: "
             ],
             [
-                "Which UKPSF expectation code has the staff specified?",
-                "Answer with the expectation codes.",
+                "Which UKPSF expectation code did the staff provide, if they provided any?",
+                "Answer with the expectation code.",
                 "conversation: {conversation}",
                 "reponse: "
             ]
@@ -472,28 +461,11 @@
         ],
         "Comprehend UKPSF expectation" : 
         [
-            "You have been supplied a list of UKPSF codes and descriptions.",
-            "(V1) respect individual learners and diverse groups of learners;",
-            "(V2) promote engagement in learning and equity of opportunity for all students to reach their potential;",
-            "(V3) use scholarship, or research, or professional learning, or other evidence-informed approaches as a basis for effective practice;",
-            "(V4) respond to the wider context in which higher education operates, recognising implications for practice; and",
-            "(V5) collaborate with others to enhance practice.",
-            "UKPSF specifies 5 areas of core knowledge that higher education staff should have. These are:",
-            "(K1) how learners learn, generally and within specific subjects;",
-            "(K2) approaches to teaching and/or supporting learning, appropriate for subjects and level of study;",
-            "(K3) critical evaluation as a basis for effective practice;",
-            "(K4) appropriate use of digital and/or other technologies, and resources for learning; and",
-            "(K5) requirements for quality assurance and enhancement, and their implications for practice.",
-            "UKPSF specifies 5 areas of activity that higher education staff should be competent in. These are:",
-            "(A1) designing and planning learning activities and/or programmes;",
-            "(A2) teaching and/or supporting learning through appropriate approaches and environments;",
-            "(A3) assessing and giving feedback for learning;",
-            "(A4) supporting and guiding learners; and",
-            "(A5) enhancing practice through own continuing professional development.",
+
             "You have also been supplied a series of questions and the answers to those questions.",
-            "If the answer to the question 'Did the higher education staff supply a UKPSF expectation' was said to be no, reply with 'No'.",
             "If the answer to the question 'Which UKPSF code did the higher education staff select' matches any of the codes to the answer of the question 'Which UKPSF codes relate to the assignment question', then reply with the UKPSF code and it's description.",
-            "Otherwise reply with 'No.'",
+            "That's all.",
+            "Otherwise reply with any one of the UKPSF expectation codes with its description.",
             "Conversation: {conversation}",
             "Response: " 
         ]

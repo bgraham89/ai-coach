@@ -1,9 +1,11 @@
 import json
 from colorama import Fore, Back, Style
+from testing.timer import Timer
 
-class DialogueStateTracking:
+class DialogueStateTracking(Timer):
 
     def __init__(self):
+        super().__init__()
         self._current_frame = ""
         self._current_slot = ""
         self._frames = []
@@ -26,7 +28,7 @@ class DialogueStateTracking:
         self._current_frame, self._current_slot = self.GetCurrentFrame(for_comprehension)
         
         if not is_cot:
-            for_comprehension and print(Fore.YELLOW + f"\nCurrent Frame: {self._current_frame} (Slot: {self._current_slot[11:]})") # Remove "Comprehend "
+            for_comprehension and self.Print(Fore.YELLOW + f"\nCurrent Frame: {self._current_frame} (Slot: {self._current_slot[11:]})") # Remove "Comprehend "
             return "".join(script["templates"][self._current_slot])
 
         if not is_cot_final_stage:
@@ -95,7 +97,7 @@ class DialogueStateTracking:
 
         self._current_frame, self._current_slot = self.GetCurrentFrame(True)
         should_use_cof = script["has_chain_of_thought"][self._current_slot] == "True"
-        should_use_cof and print(Fore.CYAN + f"Using Chain Of Thought")
+        should_use_cof and self.Print(Fore.CYAN + f"Using Chain Of Thought")
         return should_use_cof
 
     def GetNewConversation(self):
@@ -142,7 +144,7 @@ class DialogueStateTracking:
         
         assignment_choice = self._progress["Assignment choice"].lower()
         insight = assignment_info["explanations"][self._RemovePunctuation(assignment_choice)][choice % 4]
-        print(Fore.RED + f"Insight: {insight}")
+        self.Print(Fore.RED + f"Insight: {insight}")
         return insight
     
     def _RemovePunctuation(self, text):

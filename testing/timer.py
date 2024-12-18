@@ -7,7 +7,7 @@ class Timer(object):
         self._should_print_with_time = True
         super().__init__()
 
-    def Print(self, string_to_print, should_print):
+    def Print(self, string_to_print, should_print=False):
         if not should_print:
             return
 

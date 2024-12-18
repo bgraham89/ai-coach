@@ -90,7 +90,7 @@ class Application(Timer, Automator):
             return ""
 
         if not hasattr(self, "_rag"):
-            print(Fore.RED + "Creating RAG database - this may take a couple of minutes")
+            self.Print(Fore.RED + "Creating RAG database - this may take a couple of minutes")
             self._CreateRAG()
 
         for _ in range(3):
@@ -100,12 +100,12 @@ class Application(Timer, Automator):
             evaluator = self._CreateQueryEvaluator()
             if self._gqr.ApproveDocuments(evaluator, documents):
                 break
-            print(Fore.LIGHTRED_EX + f"Discarded RAG query: {query}.")
+            self.Print(Fore.LIGHTRED_EX + f"Discarded RAG query: {query}.")
         else:
-            print(Fore.MAGENTA + f"RAG could not extract anything useful.")
+            self.Print(Fore.MAGENTA + f"RAG could not extract anything useful.")
             return "A document containing nothing useful"
-        print(Fore.YELLOW + f"RAG query: {query}.")
-        print(Fore.MAGENTA + f"RAG extract: {text}.")
+        self.Print(Fore.YELLOW + f"RAG query: {query}.")
+        self.Print(Fore.MAGENTA + f"RAG extract: {text}.")
         return text
     
     def _GenerateResponse(self, prompt_injections):
@@ -129,7 +129,7 @@ class Application(Timer, Automator):
         response = self._GenerateResponse(prompt_injections)
         if self._dst.FillSlot(response, self._GetPaths()):
             self._conversation = self._dst.GetNewConversation() + self._conversation[-1:]
-        print(Fore.GREEN + f"(Slot comprehended?: {response})")
+        self.Print(Fore.GREEN + f"(Slot comprehended?: {response})")
 
     def _ChainOfThoughtComprehension(self):
         user_query = self._conversation[-1][24:]
@@ -145,14 +145,14 @@ class Application(Timer, Automator):
                 response = self._GenerateResponse(prompt_injections)
                 if self._dst.FillSlot(response, self._GetPaths()):
                     self._conversation = self._dst.GetNewConversation() + self._conversation[-1:]
-                print(Fore.GREEN + f"(Slot comprehended?: {response})")
+                self.Print(Fore.GREEN + f"(Slot comprehended?: {response})")
                 break
             documents = self._GetDocumentText()
             prompt_injections = self._dst.AddPromptInjections(self._conversation, documents, self._GetPaths())
             response = self._GenerateResponse(prompt_injections)
             chain_of_thought.append(self._prompt_template.template)
             chain_of_thought.append(response)
-            print(Fore.CYAN + "Thoughts: " + response)
+            self.Print(Fore.CYAN + "Thoughts: " + response)
             cot_index += 1
 
     def _RespondToUserQuery(self):
